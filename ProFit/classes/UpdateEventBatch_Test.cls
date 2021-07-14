@@ -19,11 +19,11 @@ public class UpdateEventBatch_Test {
         try{
             Test.startTest();
 
-        Id batchId = Database.executeBatch(new UpdateEventBatch(), 120);
-        
-        Test.stopTest();
+            Id batchId = Database.executeBatch(new UpdateEventBatch(), 120);
+            
+            Test.stopTest();
         }catch (Exception ex){
-
+            System.debug('Get Exception: '+ex.getMessage());
         }
         System.AssertEquals(
            database.countquery('SELECT COUNT()'

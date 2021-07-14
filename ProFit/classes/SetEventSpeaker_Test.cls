@@ -58,7 +58,7 @@ private class SetEventSpeaker_Test {
         
         }
         catch (Exception ex){
-            
+          System.debug('Get Exception: '+ex.getMessage());
         }
         
       }

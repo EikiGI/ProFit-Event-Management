@@ -5,8 +5,8 @@ public with sharing class EventDetailsController_Test {
         evt.Name__c = 'Test Event';
         evt.Live__c = true;
         evt.Max_Seat__c = 50;
-        evt.Start_Date_Time__c = datetime.newInstance(2021, 6, 24, 19, 30, 0);
-        evt.End_Date_Time__c = datetime.newInstance(2021, 6, 27, 20, 30, 0);
+        evt.Start_Date_Time__c = datetime.newInstance(2021, 8, 24, 19, 30, 0);
+        evt.End_Date_Time__c = datetime.newInstance(2021, 8, 27, 20, 30, 0);
         insert evt;
         return evt.Id;
     }
@@ -39,7 +39,7 @@ public with sharing class EventDetailsController_Test {
         name = retrievedSpeaker.get(0);
         Test.stopTest();
         System.assertEquals('Test Name',name.Name);
-        //System.assertEquals('Test Name',acquiredSpeaker.Name);
+        
     }
     @IsTest
     static void testLocation(){

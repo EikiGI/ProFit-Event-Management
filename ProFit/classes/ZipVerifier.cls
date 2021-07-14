@@ -20,8 +20,8 @@ public with sharing class ZipVerifier {
                         Map<String, Object> results = (Map<String, Object>) obj;
                         List<Object> zipObject = (List<Object>) results.get('zipcodes');
                         if(zipObject!=null){
-                            loc.Is_Zip_correct__c = true;
-                            update loc;
+                            //loc.Is_Zip_correct__c = true;
+                            //update loc;
                             locationCall(locId);
                         }else{
                             loc.Is_Zip_correct__c = false;
@@ -60,7 +60,7 @@ public with sharing class ZipVerifier {
                     zc = (Integer)integer.valueof(result.get('zipcode'));
                 }
                     if(respstBody.length()>2 && zc==integer.valueof(loc.Postal_Code__c)){
-                        
+                        loc.Is_Zip_correct__c = true;
                         loc.Verified__c = true;
                     }else{
                         
@@ -74,3 +74,4 @@ public with sharing class ZipVerifier {
         }
     }
 }
+

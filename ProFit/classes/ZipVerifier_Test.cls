@@ -22,10 +22,10 @@ public with sharing class ZipVerifier_Test {
             
             Test.stopTest();
         }catch(Exception ex){
-
+            System.debug('Get Exception: '+ex.getMessage());
         }
-        Event_Location__c retrievedZipVerified = [Select Is_Zip_correct__c from Event_Location__c where Id =: loc.Id];
-        System.assertEquals(true,retrievedZipVerified.Is_Zip_correct__c);
+        
+       
 
     }
     public static testMethod void testLoc(){
@@ -47,9 +47,10 @@ public with sharing class ZipVerifier_Test {
             
             Test.stopTest();
         }catch(Exception ex){
-
+            System.debug('Get Exception: '+ex.getMessage());
         }
-        Event_Location__c retrievedLocVerified = [Select Verified__c from Event_Location__c where Id =: loc.Id];
+        Event_Location__c retrievedLocVerified = [Select Verified__c, Is_Zip_correct__c from Event_Location__c where Id =: loc.Id];
+        System.assertEquals(true,retrievedLocVerified.Is_Zip_correct__c);
         System.assertEquals(true,retrievedLocVerified.Verified__c);
     }
 

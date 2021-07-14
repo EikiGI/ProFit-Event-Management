@@ -39,10 +39,14 @@ public class AttendeeTriggerHandler_Test {
     static void sendEmailTest(){
         Test.startTest();
         try{
-            integer i = 10/0;
+            setupData();
+            List <Event_Attendee__c> evtAtt = [Select Id, Name, Attendee__c, Event__c from Event_Attendee__c];
+            AttendeeTriggerHandler.sendConfirmationEmail(evtAtt);
         }catch(System.Exception ex ){
-            
+            System.debug('Get Exception: '+ex.getMessage());
         }
         Test.stopTest();
     }
 }
+    
+

@@ -15,13 +15,19 @@ public class UpdateEventBatch implements Database.Batchable<sObject> {
     }
     
     public void finish(Database.BatchableContext batchContext){
+        
+        String userName = UserInfo.getUserName();
+        User activeUser = [Select Name,Email From User where Username = : userName limit 1];
+        String userEmail = activeUser.Email;
+        String userWholeName = activeUser.Name;
+        
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         
         mail.setSubject('Batch Processing Completed');
         List<String> toAddress = new List<String>();
-        toAddress.add('jeffry.gacusan@gmail.com');
+        toAddress.add(userEmail);
         mail.setToAddresses( toAddress );
-        mail.setSenderDisplayName('JeffSemiPogi');
+        mail.setSenderDisplayName(userWholeName);
         
         mail.setHtmlBody('The Update Batch Processing has been Completed');
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });

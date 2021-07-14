@@ -60,11 +60,11 @@ public class AttendeeTriggerHandler {
                 System.debug(email.isSuccess());
                 if(!email.isSuccess()){
                     List<Messaging.SendEmailError> errors = email.getErrors();
-                    //TransactionLogHandler.doHandleExceptionWithError(JSON.serialize(errors), 'AttendeeTriggerHandler');
+                    
                 }
             }  
         }catch(System.Exception ex){
-            //TransactionLogHandler.doHandleException(ex, 'AttendeeTriggerHandler');
+            System.debug('Get Exception: '+ex.getMessage());
         }
     }
 }
